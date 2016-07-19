@@ -1,0 +1,23 @@
+<html>
+<head>
+    <title>the first bind application</title>
+    <script type="text/javascript" src="angular.js"></script>
+    </head>
+    <body ng-app>
+    <div >
+        Name :<input type="text" ng-model="name" placeholder="Enter a name"/>
+        <p> Hello {{name}} and Hello <span ng-bind="name"></span></p>
+        </div>
+        <div ng-init = "countries = [{locale:'en-US',name:'United States'}, {locale:'en-GB',name:'United Kingdom'}, {locale:'en-FR',name:'France'}]"> 
+         <p>Enter your Name: <input type = "text" ng-model = "name"></p>
+         <p>Hello <span ng-bind = "name"></span>!</p>
+         <p>List of Countries with locale:</p>
+      
+         <ol>
+            <li ng-repeat = "country in countries">
+               {{ 'Country: ' + country.name + ', Locale: ' + country.locale }}
+            </li>
+         </ol>
+      </div>
+    </body>
+</html>

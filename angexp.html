@@ -1,0 +1,15 @@
+<html>
+<head>
+    <script type="text/javascript" src="angular.js"> </script>
+    <title>This is an example for angular js expressions</title>
+    </head>
+    <body ng-app="">
+        <div ng-init="cost=20;quantity = 30;student = {firstname : 'prithvi',lastname : 'Mukesh'};marks = [30,40,50,60,70]">
+        <p>Hello {{student.firstname +" "+student.lastname}}</p>
+            <p>Your books rates are {{ cost * quantity }} !</p>
+            <p>Your marks are in maths {{marks[3]}}!</p>
+            
+        </div>
+    
+    </body>
+</html>

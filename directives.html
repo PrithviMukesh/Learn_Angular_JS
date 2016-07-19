@@ -1,0 +1,43 @@
+<html>
+
+<head>
+    <title>Angular JS Services</title>
+    <script src = "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+</head>
+<body>
+<div ng-app="myapp" ng-controller="studentcontroller">
+    <student name = "prithvi"></student><br><br>
+    <student name = "mukesh"></student><br>
+    </div>
+
+<script>
+    var app = angular.module('myapp' , []);
+    app.directive('student' ,function(){
+        var directive = {};
+        directive.restrict = 'E';
+        directive.template = "Student : <b> {{student.name}} </b> ,Roll no :<b>{{student.roll}}</b>";
+        directive.scope = {student : "=name"}
+        directive.compile = function(element,attributes) {
+            element.css("border", "5 px solid red");
+            var linkFunction = function ($scope, element, attributes) {
+                element.html("Student :" + $scope.student.name + " ,Roll no :" + $scope.student.roll + "");
+                element.css("background-color", "yellow");
+            }
+            return linkFunction;
+        }
+        return directive;
+    });
+    app.controller('studentcontroller' , function($scope){
+        $scope.prithvi ={};
+        $scope.prithvi.name="PRITHVI";
+        $scope.prithvi.roll = 123234;
+        $scope.mukesh = {};
+        $scope.mukesh.name="MUKESH";
+        $scope.mukesh.roll = 123;
+
+    });
+</script>
+
+</body>
+
+</html>

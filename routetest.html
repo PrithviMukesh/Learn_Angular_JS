@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>THis is an test of route viewss</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src = "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.min.js"></script>
+</head>
+<style>
+    ul#menu li{
+        display:inline;
+    }
+    a:hover {text-decoration: underline;}
+</style>
+<body>
+
+<div ng-app="myapp">
+    <p><ul id="menu"><li><a href="#addstudents ">Add student</a></li>
+    <li><a href = "#viewstudents">View students</a></ul></p>
+
+<div ng-view></div>
+
+<script type="text/ng-template" id="addstudents.htm">
+<h1 style="color:blue">This add students page</h1>
+    <p>{{message}}</p>
+</script>
+
+<script type="text/ng-template" id="viewstudents.htm">
+    <h1 style="color:yellow">This is view students page</h1>
+    <p>{{message}}</p>
+</script>
+
+</div>
+
+<script>
+    var mainapp = angular.module("myapp" , ['ngRoute']);
+    mainapp.config(['$routeProvider' , function($routeprovider){
+        $routeprovider.
+                when('/addstudents', {
+            templateUrl : 'addstudents.htm',
+        controller :'addstudents'
+        }).
+        when('/viewstudents' , {
+            templateUrl :'viewstudents.htm',
+        controller :'viewstudents'
+        }).
+        otherwise(  {
+            redirectTo:'/addstudents'
+        });
+    }]);
+    mainapp.controller('addstudents', function($scope){
+        $scope.message = "this is add students";
+    });
+    mainapp.controller('viewstudents' , function($scope){
+        $scope.message = "this is view students";
+    });
+</script>
+
+</body>
+</html>
